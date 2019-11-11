@@ -10,12 +10,9 @@
     "region"      : "us-west-1",
     "configuration" : "Release",
     "framework"     : "netcoreapp2.1",
-    "function-runtime" : "dotnetcore2.1",
-    "function-memory-size" : 256,
-    "function-timeout"     : 30,
-    "function-handler"     : "soe_lambda::soe_lambda.Function::FunctionHandler",
-    "function-name"        : "soe_lambda",
-    "function-role"        : "arn:aws:iam::786220933569:role/lambda_exec_soe_lambda",
-    "tracing-mode"         : "PassThrough",
-    "environment-variables" : ""
+    "s3-prefix"     : "soe_lambda/",
+    "template"      : "serverless.template",
+    "template-parameters" : "\"ShouldCreateBucket\"=\"true\";\"BucketName\"=\"\"",
+    "s3-bucket"           : "soe-form",
+    "stack-name"          : "soe-form"
 }
