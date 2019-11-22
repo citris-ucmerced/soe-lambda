@@ -3,7 +3,7 @@
     "windowsAuthentication": false,
     "anonymousAuthentication": true,
     "iisExpress": {
-      "applicationUrl": "http://localhost:65433/",
+      "applicationUrl": "http://localhost:55722/",
       "sslPort": 0
     }
   },
@@ -15,13 +15,13 @@
         "ASPNETCORE_ENVIRONMENT": "Development"
       }
     },
-    "soe_lambda": {
+    "soe_backend": {
       "commandName": "Project",
       "launchBrowser": true,
       "environmentVariables": {
         "ASPNETCORE_ENVIRONMENT": "Development"
       },
-      "applicationUrl": "http://localhost:65434/"
+      "applicationUrl": "http://localhost:55723/"
     },
     "Mock Lambda Test Tool": {
       "commandName": "Executable",

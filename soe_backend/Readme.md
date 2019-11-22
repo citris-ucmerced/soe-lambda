@@ -63,12 +63,12 @@ If already installed check if new version is available.
 
 Execute unit tests
 ```
-    cd "soe_lambda/test/soe_lambda.Tests"
+    cd "soe_backend/test/soe_backend.Tests"
     dotnet test
 ```
 
 Deploy application
 ```
-    cd "soe_lambda/src/soe_lambda"
+    cd "soe_backend/src/soe_backend"
     dotnet lambda deploy-serverless
 ```

@@ -10,9 +10,9 @@
     "region"      : "us-west-1",
     "configuration" : "Release",
     "framework"     : "netcoreapp2.1",
-    "s3-prefix"     : "soe_lambda/",
+    "s3-prefix"     : "soe_backend/",
     "template"      : "serverless.template",
     "template-parameters" : "\"ShouldCreateBucket\"=\"true\";\"BucketName\"=\"\"",
-    "s3-bucket"           : "soe-form",
-    "stack-name"          : "soe-form"
+    "s3-bucket"           : "soe-form-data",
+    "stack-name"          : "SoeFormBackend"
 }

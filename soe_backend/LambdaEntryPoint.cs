@@ -6,13 +6,13 @@ using System.Threading.Tasks;
 using Microsoft.AspNetCore.Hosting;
 using System.IO;
 
-namespace soe_lambda
+namespace soe_backend
 {
     /// <summary>
     /// This class extends from APIGatewayProxyFunction which contains the method FunctionHandlerAsync which is the 
     /// actual Lambda function entry point. The Lambda handler field should be set to
     /// 
-    /// soe_lambda::soe_lambda.LambdaEntryPoint::FunctionHandlerAsync
+    /// soe_backend::soe_backend.LambdaEntryPoint::FunctionHandlerAsync
     /// </summary>
     public class LambdaEntryPoint :
         // When using an ELB's Application Load Balancer as the event source change 

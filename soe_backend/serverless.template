@@ -41,7 +41,7 @@
     "AspNetCoreFunction": {
       "Type": "AWS::Serverless::Function",
       "Properties": {
-        "Handler": "soe_lambda::soe_lambda.LambdaEntryPoint::FunctionHandlerAsync",
+        "Handler": "soe_backend::soe_backend.LambdaEntryPoint::FunctionHandlerAsync",
         "Runtime": "dotnetcore2.1",
         "CodeUri": "",
         "MemorySize": 256,
@@ -52,17 +52,6 @@
         ],
         "Environment": {
           "Variables": {
-            "AppS3Bucket": {
-              "Fn::If": [
-                "CreateS3Bucket",
-                {
-                  "Ref": "Bucket"
-                },
-                {
-                  "Ref": "BucketName"
-                }
-              ]
-            }
           }
         },
         "Events": {
@@ -81,46 +70,6 @@
             }
           }
         }
-      }
-    },
-
-    "Bucket": {
-      "Type": "AWS::S3::Bucket",
-      "Condition": "CreateS3Bucket",
-      "Properties": {
-        "BucketName": {
-          "Fn::If": [
-            "BucketNameGenerated",
-            {
-              "Ref": "AWS::NoValue"
-            },
-            {
-              "Ref": "BucketName"
-            }
-          ]
-        }
-      }
-    }
-  },
-
-  "Outputs": {
-    "ApiURL": {
-      "Description": "API endpoint URL for Prod environment",
-      "Value": {
-        "Fn::Sub": "https://${ServerlessRestApi}.execute-api.${AWS::Region}.amazonaws.com/Prod/"
-      }
-    },
-    "S3ProxyBucket": {
-      "Value": {
-        "Fn::If": [
-          "CreateS3Bucket",
-          {
-            "Ref": "Bucket"
-          },
-          {
-            "Ref": "BucketName"
-          }
-        ]
       }
     }
   }
