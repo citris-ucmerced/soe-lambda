@@ -4,37 +4,41 @@ using System.Collections.Generic;
 using System.Linq;
 using System.Threading.Tasks;
 using Amazon;
-using Amazon.S3;
-using Amazon.S3.Model;
 using Newtonsoft.Json.Linq;
+using System.IO;
+
 
 namespace soe_backend.Controllers
 {
     [Route("api/[controller]")]
     public class SoeFormController : Controller
     {
-        private const string bucketName = "soe-form-data";
-        private const string keyName = "*** object key ***";
-        
-        private static readonly RegionEndpoint bucketRegion = RegionEndpoint.USWest1;
-        private static IAmazonS3 client;
-
-        public SoeFormController()
-        {
-            client = new AmazonS3Client(bucketRegion);
-        }
-
         [HttpGet]
-        public string GetForm()
+        public async Task<string> GetForm()
         {
-            // Get most recent form from S3 bucket, parse and return as JSON
-            return "Form Data From S3";
+            try
+            {
+                SQLHandler.ExecuteQuery("SELECT * FROM dbo.Forms");
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex);
+            }
+            return "GetForm";
         }
 
         [HttpPost]
-        public JObject PostFormData([FromBody] JObject data)
+        public async Task<JObject> PostFormData([FromBody] JObject data)
         {
-            // Get exisitng soe-form-data csv and append new 
+            try
+            {
+
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+            }
+
             return data;
         }
     }
