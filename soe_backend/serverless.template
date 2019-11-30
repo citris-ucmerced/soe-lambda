@@ -52,6 +52,8 @@
         ],
         "Environment": {
           "Variables": {
+		  "db_username": "admin",
+		  "db_password": "soeformdb"
           }
         },
         "Events": {

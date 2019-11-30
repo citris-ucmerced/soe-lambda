@@ -45,10 +45,11 @@ public static class SQLHandler
 {
     public static string ExecuteQuery(string query)
     {
+        string connectionString = "Data Source=soeformdb.chlp0malcesh.us-west-1.rds.amazonaws.com;Initial Catalog=soeform;User id=" + System.Environment.GetEnvironmentVariable("db_username") + ";" + "Password=" + System.Environment.GetEnvironmentVariable("db_password") + ";";
         try
         {
             /* Defines connection parameters and query logic */
-            using (SqlConnection connection = new SqlConnection(System.Environment.GetEnvironmentVariable("Connection String")))
+            using (SqlConnection connection = new SqlConnection(connectionString))
             {
                 using (SqlCommand command = new SqlCommand(query, connection))
                 {

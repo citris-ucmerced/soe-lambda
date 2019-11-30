@@ -14,21 +14,23 @@ namespace soe_backend.Controllers
     public class SoeFormController : Controller
     {
         [HttpGet]
-        public async Task<string> GetForm()
+        public string GetForm()
         {
+            string sqlResult = "";
             try
             {
-                SQLHandler.ExecuteQuery("SELECT * FROM dbo.Forms");
+                sqlResult = SQLHandler.ExecuteQuery("SELECT * FROM dbo.Forms");
             }
             catch (Exception ex)
             {
                 Console.Write(ex);
+                return "Unable to execute query: " + ex;
             }
-            return "GetForm";
+            return sqlResult;
         }
 
         [HttpPost]
-        public async Task<JObject> PostFormData([FromBody] JObject data)
+        public string PostFormData([FromBody] string data)
         {
             try
             {
