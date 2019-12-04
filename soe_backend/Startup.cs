@@ -25,10 +25,15 @@ namespace soe_backend
         // This method gets called by the runtime. Use this method to add services to the container
         public void ConfigureServices(IServiceCollection services)
         {
+            services.AddCors(options =>
+            {
+                options.AddPolicy("AllowMyOrigin",
+                builder => builder.AllowAnyOrigin().AllowAnyMethod().AllowAnyHeader());
+            });
             services.AddMvc().SetCompatibilityVersion(CompatibilityVersion.Version_2_1);
 
             // Add S3 to the ASP.NET Core dependency injection framework.
-            services.AddAWSService<Amazon.S3.IAmazonS3>();
+            services.AddAWSService<Amazon.S3.IAmazonS3>(); 
         }
 
         // This method gets called by the runtime. Use this method to configure the HTTP request pipeline
@@ -42,7 +47,7 @@ namespace soe_backend
             {
                 app.UseHsts();
             }
-
+            app.UseCors("AllowMyOrigin");
             app.UseHttpsRedirection();
             app.UseMvc();
         }
